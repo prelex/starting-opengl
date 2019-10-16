@@ -1,7 +1,7 @@
 # starting-opengl
 
 This is my first project in OpenGL using C++. I have applied all the skills learned from the "Getting Started" section of
-[learnopengl.com](learnopengl.com).
+learnopengl.com.
 
 When the user starts the application, they are put in a first-person camera view, whereby they can move the camera around with the W,A,S,D
 keys, and point the camera with the mouse. They can also zoom in and out by scrolling up and down with the mouse.  
