@@ -73,9 +73,10 @@ int main()
 	unsigned int redSwitchTexture = loadTexture("red_power_button.png");
 	unsigned int greenSwitchTexture = loadTexture("green_power_button.png");
 
-	// load appropriate vertex and fragment shaders, and create shader program
+	// load appropriate vertex and fragment shaders, and create shader programs
 	Shader cubeShader("cubeVertexShader.txt", "cubeFragmentShader.txt");
 	Shader switchShader("switchVertexShader.txt", "switchFragmentShader.txt");
+	Shader lightShader("basicVertexShader.txt", "lightingFragmentShader.txt");
 
 	glViewport(0, 0, 800, 600);
 
@@ -125,6 +126,51 @@ int main()
 	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 	};
 
+	// same as above, just without texture coords
+	float cubeVertices[] = {
+		-0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+
+		-0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
+
+		-0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+
+		-0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f, -0.5f,
+
+		-0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		 0.5f,  0.5f,  0.5f,
+		 0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f,
+	}; 
+
 	// positions of the 15 cubes to spell out "C++"
 	glm::vec3 cubePositions[] = {
 	 glm::vec3(-6.0f,  0.0f,  0.0f),   // C
@@ -156,9 +202,9 @@ int main()
 	};
 
 	// create vertex buffers and vertex arrays
-	unsigned int VBOs[2], VAOs[2];
-	glGenBuffers(2, VBOs);
-	glGenVertexArrays(2, VAOs);
+	unsigned int VBOs[3], VAOs[3]; 
+	glGenBuffers(3, VBOs);
+	glGenVertexArrays(3, VAOs);
 
 	//------------------------------------------------------------
 	//------------------------------------------------------------
@@ -190,6 +236,18 @@ int main()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
+	glBindVertexArray(0);
+	//------------------------------------------------------------
+	//------------------------------------------------------------
+
+	//------------------------------------------------------------
+	//------------------------------------------------------------
+	// set up light source (lamp) vertex array
+	glBindVertexArray(VAOs[2]);
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[2]);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
 	glBindVertexArray(0);
 	//------------------------------------------------------------
 	//------------------------------------------------------------
