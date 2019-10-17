@@ -76,7 +76,6 @@ int main()
 	// load appropriate vertex and fragment shaders, and create shader programs
 	Shader cubeShader("cubeVertexShader.txt", "cubeFragmentShader.txt");
 	Shader switchShader("switchVertexShader.txt", "switchFragmentShader.txt");
-	Shader lightShader("basicVertexShader.txt", "lightingFragmentShader.txt");
 
 	glViewport(0, 0, 800, 600);
 
