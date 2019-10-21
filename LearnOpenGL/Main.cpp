@@ -63,8 +63,8 @@ int main()
 	}
 
 	// load appropriate vertex and fragment shaders, and create shader programs
-	Shader lightingShader("lightingVertexShader.txt", "lightingFragmentShader.txt");
-	Shader lampShader("lampVertexShader.txt", "lampFragmentShader.txt");
+	Shader lightingShader("shaders/lightingVertexShader.txt", "shaders/lightingFragmentShader.txt");
+	Shader lampShader("shaders/lampVertexShader.txt", "shaders/lampFragmentShader.txt");
 
 	glViewport(0, 0, 800, 600);
 
