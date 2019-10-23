@@ -114,18 +114,23 @@ int main()
 	-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
 	};
 
-	// positions of the cubes
+	// positions of the 15 cubes to spell out "C++"
 	glm::vec3 cubePositions[] = {
-	 glm::vec3(0.0f,  0.0f,  0.0f),
-	 glm::vec3(2.0f,  5.0f, -15.0f),
-	 glm::vec3(-1.5f, -2.2f, -2.5f),
-	 glm::vec3(-3.8f, -2.0f, -12.3f),
-	 glm::vec3(2.4f, -0.4f, -3.5f),
-	 glm::vec3(-1.7f,  3.0f, -7.5f),
-	 glm::vec3(1.3f, -2.0f, -2.5f),
-	 glm::vec3(1.5f,  2.0f, -2.5f),
-	 glm::vec3(1.5f,  0.2f, -1.5f),
-	 glm::vec3(-1.3f,  1.0f, -1.5f)
+	 glm::vec3(-6.0f,  0.0f,  0.0f),   // C
+	 glm::vec3(-5.5f,  1.25f, 0.0f),   // 
+	 glm::vec3(-5.5f, -1.25f,  0.0f),  //  
+	 glm::vec3(-4.0f, 1.5f,  0.0f),    // 
+	 glm::vec3(-4.0f, -1.5f,  0.0f),   // _______
+	 glm::vec3(-2.0f,  0.0f,  0.0f),   // +
+	 glm::vec3(-0.5f, 0.0f,  0.0f),    // 
+	 glm::vec3(1.0f,  0.0f,  0.0f),    //
+	 glm::vec3(-0.5f,  1.5f,  0.0f),   //
+	 glm::vec3(-0.5f,  -1.5f,  0.0f),  // _______
+	 glm::vec3(3.0f,  0.0f,  0.0f),    // +
+	 glm::vec3(4.5f, 0.0f,  0.0f),	   // 
+	 glm::vec3(6.0f,  0.0f,  0.0f),	   // 
+	 glm::vec3(4.5f,  1.5f,  0.0f),	   //
+	 glm::vec3(4.5f,  -1.5f,  0.0f)	   // 
 	};
 
 	glm::vec3 pointLightPositions[] = {
@@ -190,16 +195,6 @@ int main()
 		lightingShader.setVec3("viewPos", camera.Position);
 		lightingShader.setFloat("material.shininess", 32.0f);
 
-		// directional light
-		lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-		lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-		lightingShader.setVec3("light.diffuse", 0.4f, 0.4f, 0.4f);
-		lightingShader.setVec3("light.specular", 0.5f, 0.5f, 0.5f);
-
-		lightingShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-		lightingShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-		lightingShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-		lightingShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 		// point light 1
 		lightingShader.setVec3("pointLights[0].position", pointLightPositions[0]);
 		lightingShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
@@ -264,7 +259,7 @@ int main()
 
 		// render cube objects
 		glBindVertexArray(cubeVAO);
-		for (unsigned int i = 0; i < 10; ++i)
+		for (unsigned int i = 0; i < 15; ++i)
 		{
 			glm::mat4 model = glm::mat4(1.0f);
 			model = glm::translate(model, cubePositions[i]);
