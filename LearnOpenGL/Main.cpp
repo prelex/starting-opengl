@@ -31,7 +31,7 @@ bool firstMouse = true;
 Camera camera(glm::vec3(0.0f, 0.0f, 20.0f));
 
 // Position of light source
-glm::vec3 lightPos(0.0f, 3.0f, 3.0f);
+glm::vec3 lightPos(0.0f, 3.0f, 5.0f);
 
 int main()
 {
