@@ -189,14 +189,16 @@ int main()
 		lightingShader.setVec3("viewPos", camera.Position);
 		lightingShader.setFloat("material.shininess", 32.0f);
 
+		lightPos.x = 5*sin(2 * glfwGetTime());
+
 		// point light
 		lightingShader.setVec3("pointLight.position", lightPos);
 		lightingShader.setVec3("pointLight.ambient", 0.05f, 0.05f, 0.05f);
 		lightingShader.setVec3("pointLight.diffuse", 0.8f, 0.66f, 0.41f);
 		lightingShader.setVec3("pointLight.specular", 1.0f, 1.0f, 1.0f);
 		lightingShader.setFloat("pointLight.constant", 1.0f);
-		lightingShader.setFloat("pointLight.linear", 0.045);
-		lightingShader.setFloat("pointLight.quadratic", 0.0075);
+		lightingShader.setFloat("pointLight.linear", 0.07);
+		lightingShader.setFloat("pointLight.quadratic", 0.017);
 
 		// spotlight
 		lightingShader.setVec3("spotLight.position", camera.Position);
