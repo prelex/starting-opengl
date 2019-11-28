@@ -1,3 +1,3 @@
 # starting-opengl
 
-First project in OpenGL.
+First attempt at doing something with OpenGL.
